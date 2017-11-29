@@ -31,6 +31,14 @@
  */
 void operatorControl() {
 	while (1) {
+		int frontBack, leftRight;
+		frontBack = joystickGetAnalog(1, 1);
+		leftRight = joystickGetAnalog(1, 3);
+		motorSet(2, frontBack + leftRight);
+		motorSet(3, frontBack + leftRight);
+		motorSet(4, frontBack - leftRight);
+		motorSet(5, frontBack - leftRight);
+
 		delay(20);
 	}
 }
