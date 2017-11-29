@@ -29,15 +29,18 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+
+Encoder encodeLF, encodeLR, encodeBL, encodeBR;
+
 void operatorControl() {
 	while (1) {
 		int frontBack, leftRight;
-		frontBack = joystickGetAnalog(1, 1);
-		leftRight = joystickGetAnalog(1, 3);
+		frontBack = joystickGetAnalog(1, 3);
+		leftRight = joystickGetAnalog(1, 1);
 		motorSet(2, frontBack + leftRight);
 		motorSet(3, frontBack + leftRight);
-		motorSet(4, frontBack - leftRight);
-		motorSet(5, frontBack - leftRight);
+		motorSet(4, -frontBack - leftRight);
+		motorSet(5, -frontBack - leftRight);
 
 		delay(20);
 	}
