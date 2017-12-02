@@ -101,4 +101,9 @@ void operatorControl();
 }
 #endif
 
+Encoder drive_elf;
+Encoder drive_elb;
+Encoder drive_erf;
+Encoder drive_erb;
+
 #endif

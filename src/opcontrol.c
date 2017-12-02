@@ -30,11 +30,11 @@
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 
-Encoder encodeLF, encodeLR, encodeBL, encodeBR;
-
-struct u_motor_drive_group driveGroup = {
-	{M_DRIVE_LF, -1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {M_DRIVE_RF, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED},
-	{M_DRIVE_RF, -1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {M_DRIVE_RB, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}
+static struct u_motor_drive_group driveGroup = {
+	{{M_DRIVE_LF, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elf},
+	{{M_DRIVE_RF, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erf},
+	{{M_DRIVE_LB, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elb},
+	{{M_DRIVE_RB, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erb}
 };
 
 void operatorControl() {

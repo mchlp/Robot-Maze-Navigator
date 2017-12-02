@@ -37,4 +37,8 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
+  drive_elf = encoderInit(E_DRIVE_LF_TOP, E_DRIVE_LF_BOTTOM, true);
+  drive_erf = encoderInit(E_DRIVE_RF_TOP, E_DRIVE_RF_BOTTOM, false);
+  drive_elb = encoderInit(E_DRIVE_LB_TOP, E_DRIVE_LB_BOTTOM, true);
+  drive_erb = encoderInit(E_DRIVE_RB_TOP, E_DRIVE_RB_BOTTOM, false);
 }
