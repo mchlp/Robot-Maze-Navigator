@@ -32,15 +32,19 @@
 
 Encoder encodeLF, encodeLR, encodeBL, encodeBR;
 
+struct u_motor_drive_group driveGroup = {
+	{M_DRIVE_LF, -1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {M_DRIVE_RF, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED},
+	{M_DRIVE_RF, -1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {M_DRIVE_RB, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}
+};
+
 void operatorControl() {
 	while (1) {
-		int frontBack, leftRight;
-		frontBack = joystickGetAnalog(1, 3);
-		leftRight = joystickGetAnalog(1, 1);
-		motorSet(2, frontBack + leftRight);
-		motorSet(3, frontBack + leftRight);
-		motorSet(4, -frontBack - leftRight);
-		motorSet(5, -frontBack - leftRight);
+
+		double forward, right;
+		forward = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_FB);
+		right = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_LR);
+
+		u_write_motor_drive(&driveGroup, forward, right);
 
 		delay(20);
 	}

@@ -26,6 +26,8 @@
 #define MAIN_H_
 
 #include <API.h>
+#include <const.h>
+#include <util.h>
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
