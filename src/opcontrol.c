@@ -44,7 +44,12 @@ void operatorControl() {
 		forward = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_FB);
 		right = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_LR);
 
-		u_write_motor_drive(&driveGroup, forward, right);
+		printf("%f %f\n", forward, right);
+
+		u_write_motor(&(driveGroup.fl.motor), (forward + right)*127);
+	  u_write_motor(&(driveGroup.fr.motor), (forward - right)*127);
+	  u_write_motor(&(driveGroup.bl.motor), (forward + right)*127);
+	  u_write_motor(&(driveGroup.br.motor), (forward - right)*127);
 
 		delay(20);
 	}
