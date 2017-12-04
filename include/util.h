@@ -35,7 +35,7 @@ static double u_clamp(double value, double min, double max) {
 }
 
 static void u_write_motor(struct u_motor *motor, double value) {
-  int speed = u_clamp(value * motor->mul, -motor->min, -motor->max) * MAX_MOTOR_SPEED;
+  int speed = u_clamp(value * motor->mul, motor->min, motor->max) * MAX_MOTOR_SPEED;
   if (motor->reversed) {
     speed *= -1;
   }
@@ -81,7 +81,7 @@ static void u_write_motor_drive(struct u_motor_drive_group *group, double forwar
 }
 
 static double u_get_joy_analog(unsigned int joystick, unsigned int axis) {
-  return joystickGetAnalog(joystick, axis) / MAX_MOTOR_SPEED;
+  return joystickGetAnalog(joystick, axis) / (double) MAX_MOTOR_SPEED;
 }
 
 #endif // UTIL_H_

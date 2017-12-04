@@ -31,10 +31,10 @@
  */
 
 static struct u_motor_drive_group driveGroup = {
-	{{M_DRIVE_LF, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elf},
-	{{M_DRIVE_RF, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erf},
-	{{M_DRIVE_LB, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elb},
-	{{M_DRIVE_RB, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erb}
+	{{M_DRIVE_FL, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elf},
+	{{M_DRIVE_FR, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erf},
+	{{M_DRIVE_BL, true, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_elb},
+	{{M_DRIVE_BR, false, 1, 0, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED}, {0.05, 0, 0, 0, 0}, &drive_erb}
 };
 
 void operatorControl() {
@@ -46,10 +46,17 @@ void operatorControl() {
 
 		printf("%f %f\n", forward, right);
 
+		/*
 		u_write_motor(&(driveGroup.fl.motor), (forward + right)*127);
 	  u_write_motor(&(driveGroup.fr.motor), (forward - right)*127);
 	  u_write_motor(&(driveGroup.bl.motor), (forward + right)*127);
 	  u_write_motor(&(driveGroup.br.motor), (forward - right)*127);
+		*/
+
+		motorSet(M_DRIVE_FL, (forward + right)*127);
+		motorSet(M_DRIVE_FR, (forward - right)*127);
+		motorSet(M_DRIVE_BL, (forward + right)*127);
+		motorSet(M_DRIVE_BR, (forward - right)*127);
 
 		delay(20);
 	}
