@@ -39,7 +39,7 @@ static void u_write_motor(struct u_motor *motor, double value) {
   if (motor->reversed) {
     speed *= -1;
   }
-  printf("%d\n", speed);
+  printf("MOTOR %d: %d\n", motor->channel, speed);
   motorSet(motor->channel, speed);
 }
 

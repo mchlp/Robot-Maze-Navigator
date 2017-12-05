@@ -44,7 +44,7 @@ void operatorControl() {
 		forward = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_FB);
 		right = u_get_joy_analog(JOYSTICK_PRIMARY, J_DRIVE_LR);
 
-		printf("%f %f\n", forward, right);
+		printf("JOYSTICK STATUS: %f %f\n", forward, right);
 
 		/*
 		u_write_motor(&(driveGroup.fl.motor), (forward + right)*127);
