@@ -54,9 +54,9 @@ void operatorControl() {
 		*/
 
 		motorSet(M_DRIVE_FL, (forward + right)*127);
-		motorSet(M_DRIVE_FR, (forward - right)*127);
+		motorSet(M_DRIVE_FR, -(forward - right)*127);
 		motorSet(M_DRIVE_BL, (forward + right)*127);
-		motorSet(M_DRIVE_BR, (forward - right)*127);
+		motorSet(M_DRIVE_BR, -(forward - right)*127);
 
 		delay(20);
 	}
